@@ -6,7 +6,7 @@ use CodeIgniter\Controller;
 class Template extends Controller
 {
 
-    public function form() { 
+    public function home() { 
         return view('home');
     }
 }
