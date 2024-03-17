@@ -6,13 +6,13 @@ use CodeIgniter\Model;
 
 class UserModel extends Model
 {
-    protected $table            = 'users';
+    protected $table            = 'admin_login';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $returnType       = 'array';
-    protected $useSoftDeletes   = false;
-    protected $protectFields    = true;
-    protected $allowedFields    = [];
+    //protected $returnType       = 'array';
+    //protected $useSoftDeletes   = false;
+    //protected $protectFields    = true;
+    protected $allowedFields    = ['id','Name','Email','UserName','Phone','Password','image','CreatedAt','last_updated'];
 
     protected bool $allowEmptyInserts = false;
 
@@ -39,4 +39,40 @@ class UserModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getAllRecords()
+    {
+        return $this->findAll();
+    }
+
+    public function updatePassword($id, $newPassword)
+    {
+        $data = [
+            'Password' => $newPassword
+        ];
+        
+        return $this->where('id', $id)->set($data)->update();
+    }
+
+    //pagination
+    
+
+//    // Fetch single record by ID
+//     public function getRecordByID($id)
+//     {
+//         return $this->find($id);
+//     }
+
+//     // Update record
+//     public function updateRecord($id, $data)
+//     {
+//         return $this->update($id, $data);
+//     }
+
+    
+//     // Delete record
+//     public function deleteRecord($id)
+//     {
+//         return $this->delete($id);
+//     }
 }
