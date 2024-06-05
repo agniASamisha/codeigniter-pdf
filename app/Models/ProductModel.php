@@ -31,6 +31,22 @@ class ProductModel extends Model
             ->get()
             ->getResultArray();
     }
-   
+    // public function getsearch_data($searchTerm){
+    //     return $this->db->table('category')
+    //               ->like('category', $searchTerm, 'both')
+    //               ->get()
+    //               ->getResultArray();
+    // }
+    public function getsearch_detail($search)
+{
+    return $this->db->table('product')
+        ->select('product.product_id, product.name, product.price, product.image, category.category')
+        ->join('category', 'product.product_id = category.product_id')
+        ->like('product.name', $search, 'after')
+        ->orLike('category.category', $search, 'after')
+        ->get()
+        ->getResultArray();
+}
+    
 }
 ?>

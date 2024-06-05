@@ -61,8 +61,22 @@ $routes->get('/home', 'ProductController::read');
 $routes->get('/read_products', 'ProductController::dashaboard');
 $routes->get('/product_view/(:num)', 'ProductController::detail/$1');
 $routes->post('cart/add/(:num)', 'ProductController::addToCart/$1');
+$routes->get('/viewCart', 'ProductController::viewCart');
+$routes->get('/cart', 'ProductController::cart');
+$routes->post('/deleteProductFromCart', 'ProductController::deleteProductFromCart');
+$routes->post('/updateProductInCart', 'ProductController::updateProductInCart');
+$routes->post('/search', 'ProductController::search');
+$routes->get('/opp', 'ProductController::addCart');
+
+
 
 $routes->get('/product_wishlist/(:num)', 'WishlistController::create/$1');
 $routes->get('/wishlist', 'WishlistController::wishlist');
+$routes->get('/delete_wishlist/(:num)', 'WishlistController::delete/$1');
 
+
+$routes->get('/address', 'AddressController::index');
+$routes->post('/add_address', 'AddressController::addAddress');
+$routes->get('/update_address/(:num)', 'AddressController::update/$1');
+// $routes->get('/edit/(:num)', 'AddressController::edit/$1');
 

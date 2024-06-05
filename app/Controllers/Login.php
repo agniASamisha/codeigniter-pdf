@@ -48,7 +48,7 @@ class Login extends BaseController
 
         //     $this->session->set('user', "$user");
 
-           //return redirect()->to('dashboard');
+           return redirect()->to('home');
             echo "login succesfully!.";
         } else {
             echo "something wrong in email or password"; 

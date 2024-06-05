@@ -13,7 +13,7 @@
               <div class="card">
               <img src="<?php echo "http://localhost/codeigniter/public/" . $records['image']; ?>" height="100px" width="100px">
                 <button><a href="<?= 'http://localhost/codeigniter/public/index.php/product_view/'.$records['product_id']?>">View more</a></button>
-                
+                <span class="delete-btn"><a href="<?= 'delete_wishlist/'.$records['id']?>"><i class="fas fa-times"></i></a></span>
             </div>
                 <?php endforeach; ?>
                 </div>

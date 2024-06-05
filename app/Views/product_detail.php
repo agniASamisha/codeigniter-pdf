@@ -33,7 +33,7 @@
                         <input class="btn" type="submit" value="submit" name="submit">
                     </div>
                 </form>
-                <a href="product_detail.php"><i class="fa fa-shopping-cart"></i>( )</a>
+                <a href="#"><i class="fa fa-shopping-cart"></i>( )</a>
                 <img src="photo/img14.png" class="menu-icon" onclick="menutoggle()">
             </div>
         </div>
@@ -58,7 +58,7 @@
                     <div class="col-2">
                         <p><?= $product['description'] ?></p>
                         <h2><?= $product['name'] ?></h2>
-                        <h4>$<?= $product['price'] ?></h4>
+                        <h4>Rs.<?= $product['price'] ?></h4>
                         <!-- <form method="post" action="addToCart.php"> -->
                             <select>
                                 <option>Select size</option>
@@ -68,9 +68,17 @@
                                 <option>XXL</option>
                                 <option>X</option>
                             </select>
+                            
                             <form action="/codeigniter/public/index.php/cart/add/<?php echo $product['product_id']; ?>" method="post">
-    <button class="btn" type="submit">Add to Cart</button>
-</form>
+                            <input type="number" name="quantity" value="1">
+        <input type="hidden" name="productId" value="<?= $product['product_id'] ?>">
+        <input type="hidden" name="productName" value="<?= $product['name'] ?>">
+    <input type="hidden" name="productPrice" value="<?= $product['price'] ?>">
+    <input type="hidden" name="productdiscount" value="<?= $product['quantity'] ?>">
+    <input type="hidden" name="productImage" value="<?= $product['image'] ?>">
+                            
+                            <button class="btn" type="submit">Add to Cart</button>
+                            </form>
                             <!-- Add other form inputs here -->
                             <!-- <button type="submit" class="btn" name="addToCart">Add to cart</button>
                         </form> -->

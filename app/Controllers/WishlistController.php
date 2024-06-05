@@ -52,7 +52,7 @@ class WishlistController extends BaseController
     //read wishlist
     public function wishlist()
     {
-        $userdata = $this->session->get('user');
+        //$userdata = $this->session->get('user');
         $id = $this->session->get('user')['id'];
         $wishlist_model = new WishlistModel();
         $wishlistData = $wishlist_model->getWishlistData($id);
@@ -69,7 +69,7 @@ class WishlistController extends BaseController
     public function delete($id)
     {
         $model = new WishlistModel();
-        $model->deleteRecord($id);
-        return redirect()->to('');
+        echo $model->deleteRecord($id);
+       // return redirect()->to('wishlist');
     }
 }

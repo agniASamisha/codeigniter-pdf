@@ -31,15 +31,13 @@
                         <li><a href="wishlist">wishlist</a></li>
                     </ul>
                 </nav>
-
                 <form method="POST" action="search">
-                    <div class="form" style="display: flex; justify-content: space-between; align-items: center; width: 200px;">
-                        <input type="text" class="form-control" name="search" placeholder="search">
-                        <input class="btn" style="" type="submit" value="submit" name="submit">
-                    </div>
-                </form>
-
-                <a href="viewCart"><i class="fa fa-shopping-cart"></i>(<?php echo $count; ?> )</a>
+<div class="form" style="display: flex; justify-content: space-between; align-items: center; width: 200px;">
+  <input type="text" class="form-control" name="search" placeholder="search">
+  <input class="btn"style="" type = "submit" value="submit" name="submit">
+</div>
+</form>
+               <a href="viewCart"><i class="fa fa-shopping-cart"></i>( )</a>
                 <img src="photo/img14.png" class="menu-icon" onclick="menutoggle()">
             </div>
             <div class="row">
@@ -52,16 +50,18 @@
             </div>
         </div>
     </div>
+    
     <!-- featured product------>
     <div class="small-container">
         <h2 class="title"> featured_protuct</h2>
         <div class="row">
-        <?php foreach ($products as $product): ?>
+        <?php if (!empty($product)): ?>
+    <?php foreach ($product as $item): ?>
             <div class="col-4">
             
-            <a href = "<?= 'product_view/' . $product['product_id'] ?>"> <img src="<?php echo "http://localhost/codeigniter/public/" . $product['image']; ?>"width='250px'; height='350px'></a>
-            <div class="wishlist"><a href="<?= 'product_wishlist/'. $product['product_id'] ?>"><i class="fa fa-heart">Wishlist</i></div>
-                <h4><a href = ""><?php echo $product['name']; ?></a> </h4>
+            <a href = "<?= 'product_view/' . $item['product_id'] ?>"> <img src="<?php echo "http://localhost/codeigniter/public/" . $item['image']; ?>"width='250px'; height='350px'></a>
+            <div class="wishlist"><a href="<?= 'product_wishlist/'. $item['product_id'] ?>"><i class="fa fa-heart"></i></div>
+                <h4><a href = ""><?php echo $item['name']; ?></a> </h4>
                 <div class="rating">
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
@@ -69,11 +69,14 @@
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star-o"></i>
                 </div>
-                <p>Rs: <?php echo $product['price']; ?></p>
-                <p> <?php echo $product['description']; ?></p>
+                <p>Rs: <?php echo $item['price']; ?></p>
+                <!-- <p> <?php //echo $item['description']; ?></p> -->
                 
             </div>
             <?php endforeach; ?>
+<?php else: ?>
+    <p>No products found.</p>
+<?php endif; ?>
         </div>
         
     </div>
@@ -117,6 +120,10 @@
             <p class="copyright"> copuright 2023 - Easy make sopping webpage </p>
         </div>
     </div>
+    <!-- <p>SELECT product.product_id, product.name, product.price, product.image, category.category 
+            FROM product 
+            INNER JOIN category ON product.product_id = category.product_id  
+            WHERE product.name LIKE '$search%' OR category.brand like 'redoster';</p> -->
     <script src="/codeigniter/public/js/home.js"></script>
 </body>
 
